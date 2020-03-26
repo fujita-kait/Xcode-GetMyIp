@@ -10,11 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var myIp: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        myIp.text = getMyIp()           // get and show my IP address
     }
-
+    
+    func getMyIp() -> String {
+        let addresses = getIFAddresses()
+        let ip = (addresses.count != 0) ? addresses[0] : "Check Network"
+        print(addresses)
+        return ip
+    }
 
 }
 
